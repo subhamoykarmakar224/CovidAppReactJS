@@ -1,10 +1,10 @@
 # CovidAppReactJS
 A simple web app to view the current status of COVID in different countries. It has been made with React.js
 
-# NPM LIBRARIES UESED
-1. Material-UI :: npm install @material-ui/core
+# NPM LIBRARIES USED
+1. Material-UI :: npm i @material-ui/core
 2. Numeral :: npm i numeral
-3. ChartJS:: npm install --save react-chartjs-2 chart.js
+3. ChartJS:: npm i --save react-chartjs-2 chart.js
 
 # APIs
 1. https://disease.sh/v3/covid-19/countries - Get COVID-19 totals for all continents
