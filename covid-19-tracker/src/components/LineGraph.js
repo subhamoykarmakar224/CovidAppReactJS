@@ -11,6 +11,7 @@ const options = {
       radius: 0,
     },
   },
+  responsive: true,
   maintainAspectRation: false,
   tooltips: {
     mode: "index",
@@ -51,9 +52,11 @@ const buildChartData = (data, casesType) => {
   let lastDataPoint;
   for(let date in data.cases) {
     if(lastDataPoint) {
+      let newVals = data[casesType][date] - lastDataPoint;
+      newVals = newVals > 0? newVals: 0;
       let newDataPoint = {
         x:date,
-        y:data[casesType][date] - lastDataPoint,
+        y:newVals,
       };
       chartData.push(newDataPoint);
     }
@@ -62,7 +65,7 @@ const buildChartData = (data, casesType) => {
   return chartData;
 };
 
-function LineGraph({casesType="cases"}) {
+function LineGraph({casesType="cases", ...props}) {
   const [data, setData] = useState({});
   
   useEffect(() => {
@@ -79,7 +82,7 @@ function LineGraph({casesType="cases"}) {
   }, [casesType]);
 
   return (
-    <div>
+    <div className={props.className}>
       {data?.length > 0 && (
         <Line 
           options={options}
